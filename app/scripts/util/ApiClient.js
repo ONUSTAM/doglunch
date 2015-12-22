@@ -10,7 +10,13 @@ var ApiClient = function(types, method, params, success, failed) {
     success(data);
   })
   .fail(function( jqXHR, textStatus, errorThrown ) {
-    failed(data);
+    console.log(jqXHR);
+    console.log(textStatus);
+    console.log(errorThrown);
+    if (jqXHR.status === 404) {
+      window.location.href = '404.html';
+    }
+    failed();
   })
 
 };
